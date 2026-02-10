@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="faviconn.ico" type="image/x-icon">
+    <title>Tenis a precios</title>
+
+    <style>
+        body {
+            font-family: "Lucida Console", "Courier New", monospace;
+            background: linear-gradient(to right, rgb(189, 189, 255), rgb(255, 233, 236));
+            padding: 0;
+            margin: 0;
+        }
+
+
+        header {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #92a4ff;
+        }
+
+        h1 {
+            background-color: black;
+            padding: 10px;
+            margin: 0;
+            color: #92a4ff;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+
+
+        .article {
+            float: left;
+            width: 70%;
+            background-color: #FFF;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #CCC;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #FFF;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+        }
+
+        .catalogo {
+            width: 100%;
+            clear: both;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .catalogo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .catalogo {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .producto {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .card-producto {
+            background-color: #FFF;
+            border: 1px solid #CCC;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+            margin: auto;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .img-container {
+            position: relative;
+            width: 90%;
+            overflow: hidden;
+        }
+
+        .img-container img {
+            display: block;
+            width: 100%;
+            transition: opacity 0.4s ease;
+        }
+
+        .img2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .img-container:hover .img2 {
+            opacity: 1;
+        }
+
+        .img-container:hover .img1 {
+            opacity: 0;
+        }
+
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+            gap: 25px;
+            justify-content: center;
+            padding: 30px;
+        }
+
+
+        .img-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        /* efecto hover */
+        .img-container:hover .img-hover {
+            opacity: 1;
+        }
+
+        .img-container:hover .img-normal {
+            opacity: 0;
+        }
+
+        .img-container:hover img {
+            transform: scale(1.08);
+        }
+
+        .corazon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border-radius: 50%;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.10s;
+        }
+
+        .corazon:hover {
+            background: red;
+            color: white;
+        }
+
+        /* info */
+        .info {
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        /* botón */
+        .btn-comprar {
+            width: 100%;
+            border: none;
+            background: black;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-comprar:hover {
+            background: #92a4ff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Tenis a precios</h1>
+        <nav>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="modelos.html">MODELOS</a></li>
+            <li><a href="categorias.html">CATEGORIAS</a></li>
+            <li><a href="contacto.html">CONTACTO</a></li>
+            <li><a class="active" href="Personal.html">MARCA PERSONAL</a></li>
+        </nav>
+    </header>
+    <br>
+    <br>
+
+    <div class="catalogo">
+
+        <div class="producto">
+            <div class="img-container">
+                <span class="corazon">❤️</span>
+                <br>
+                <img src="assets/img/imagen1a.png" class="img1">
+                <img src="assets/img/img1a.jpg" class="img2">
+            </div>
+            <h3>PLAYERA LOOSE FIT</h3>
+            <p>$249.00</p>
+            <br><br>
+            <button class="btn-comprar">Comprar</button>
+        </div>
+
+        <div class="producto">
+            <div class="img-container">
+                <img src="assets/img/img2a.jpg" class="img1">
+                <img src="assets/img/img2b.jpg" class="img2">
+            </div>
+            <h3>PLAYERA OVERSIZE</h3>
+            <p>$599.00</p>
+            <br><br>
+            <button class="btn-comprar">Comprar</button>
+        </div>
+
+        <div class="producto">
+            <div class="img-container">
+                <img src="assets/img/img3a.jpg" class="img1">
+                <img src="assets/img/img3b.jpg" class="img2">
+            </div>
+            <h3>PLAYERA JUST LOVE</h3>
+            <p>$599.00</p>
+            <br><br>
+            <button class="btn-comprar">Comprar</button>
+        </div>
+        <div class="producto">
+            <div class="img-container">
+                <img src="assets/img/img3a.jpg" class="img1">
+                <img src="assets/img/img3b.jpg" class="img2">
+            </div>
+            <h3>PLAYERA JUST LOVE</h3>
+            <p>$599.00</p>
+            <br><br>
+            <button class="btn-comprar">Comprar</button>
+        </div>
+        <div class="producto">
+            <div class="img-container">
+                <img src="assets/img/img3a.jpg" class="img1">
+                <img src="assets/img/img3b.jpg" class="img2">
+            </div>
+            <h3>PLAYERA JUST LOVE</h3>
+            <p>$599.00</p>
+            <br><br>
+            <button class="btn-comprar">Comprar</button>
+        </div>
+        <div class="producto">
+            <div class="img-container">
+                <img src="assets/img/img3a.jpg" class="img1">
+                <img src="assets/img/img3b.jpg" class="img2">
+            </div>
+            <h3>PLAYERA JUST LOVE</h3>
+            <p>$599.00</p>
+            <br><br>
+            <button class="btn-comprar">Comprar</button>
+        </div>
+        <div class="producto">
+            <div class="img-container">
+                <img src="assets/img/img3a.jpg" class="img1">
+                <img src="assets/img/img3b.jpg" class="img2">
+            </div>
+            <h3>PLAYERA JUST LOVE</h3>
+            <p>$599.00</p>
+            <br><br>
+            <button class="btn-comprar">Comprar</button>
+        </div>
+        <div class="producto">
+            <div class="img-container">
+                <img src="assets/img/img3a.jpg" class="img1">
+                <img src="assets/img/img3b.jpg" class="img2">
+            </div>
+            <h3>PLAYERA JUST LOVE</h3>
+            <p>$599.00</p>
+            <br><br>
+            <button class="btn-comprar">Comprar</button>
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+        <p>Derechos reservados &copy; 2023 Tenis a precios</p>
+    </footer>
+</body>
+
+</html>

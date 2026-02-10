@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="faviconn.ico" type="image/x-icon">
+    <title>Tenis a precios</title>
+
+    <style>
+        body {
+            font-family: "Lucida Console", "Courier New", monospace;
+            background: linear-gradient(to right, rgb(189, 189, 255), rgb(255, 233, 236));
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        h1 {
+            background-color: black;
+            padding: 10px;
+            margin: 0;
+            color: #92a4ff;
+        }
+
+        input[type=text],
+        input[type=email],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background: linear-gradient(45deg, #4CAF50, #2ecc71);
+            color: white;
+            padding: 16px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type=submit]:hover {
+            transform: scale(1.02);
+            background: linear-gradient(45deg, #45a049, #27ae60);
+        }
+
+        div.contenedor-formulario {
+            border-radius: 20px;
+            background-color: #f2f2f2;
+            padding: 30px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .article {
+
+            max-width: 900px;
+            background-color: #FFF;
+            padding: 5px;
+            margin: 20px auto;
+            border: 0px solid #CCC;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #FFF;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Tenis a precios</h1>
+        <nav>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="modelos.html">MODELOS</a></li>
+            <li><a href="categorias.html">CATEGORIAS</a></li>
+            <li><a class="active" href="contacto.html">CONTACTO</a></li>
+            <li><a href="Personal.html">MARCA PERSONAL</a></li>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <div class="article">
+        <form>
+            <br>
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribi aquí tu nombre" required minlength="3">
+
+            <label for="apellido">Apellido: </label>
+            <input type="text" id="apellido" name="apellido" placeholder="Escribi aquí tu apellido" required
+                minlength="3">
+
+            <label for="mail">Email: </label>
+            <input type="email" id="mail" name="mail" placeholder="Escribi aquí tu mail">
+
+            <label for="pais">Pais: </label>
+            <select name="pais" id="pais">
+                <option value="Argentina">Argentina</option>
+                <option value="Chile">Chile</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Perú">Perú</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="España">España</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Paraguay">Paraguay</option>
+                <option value="Ecuador">Ecuador</option>
+            </select>
+
+            <label for="comentario">Comentario: </label>
+            <textarea name="comentario" id="comentario" placeholder="Escribi aqui tu comentario"></textarea>
+
+            <label for="motivo">Motivo de contacto: </label>
+
+            <input type="radio" id="motivo" name="motivo">Soy fan</i>
+            <input type="radio" id="motivo" name="motivo">Quiero una remera</i>
+            <input type="radio" id="motivo" name="motivo">Comerciales</i>
+            <input type="radio" id="motivo" name="motivo">Reclamos</i>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+
+
+
+
+    <footer class="footer">
+        <p>Derechos reservados &copy; 2023 Tenis a precios</p>
+    </footer>
+</body>
+
+</html>

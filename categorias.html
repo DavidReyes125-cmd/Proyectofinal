@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="faviconn.ico" type="image/x-icon">
+    <title>Tenis a precios</title>
+
+    <style>
+        body {
+            font-family: "Lucida Console", "Courier New", monospace;
+            background: linear-gradient(to right, rgb(189, 189, 255), rgb(255, 233, 236));
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #92a4ff;
+        }
+
+        h1 {
+            background-color: black;
+            padding: 10px;
+            margin: 0;
+            color: #92a4ff;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .image {
+            float: right;
+            margin: 0 0 20px 20px;
+            max-width: 25%;
+            height: auto;
+        }
+
+        .image2 {
+            float: left;
+            margin: 0 20px 20px 0;
+            max-width: 25%;
+            height: auto;
+        }
+
+        .article {
+            float: left;
+            width: 70%;
+            background-color: #FFF;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #CCC;
+        }
+
+        .categorias {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .categoria {
+            text-align: center;
+            background-color: rgb(255, 233, 236);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 250px;
+            text-decoration: none;
+            color: #000;
+            transition: transform 0.3s ease;
+        }
+
+        .categoria:hover {
+            transform: translateY(-5px);
+        }
+
+        .categoria img {
+            display: block;
+            margin: 0 auto 10px auto;
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .categoria p {
+            font-weight: bold;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #FFF;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Tenis a precios</h1>
+        <nav>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="modelos.html">MODELOS</a></li>
+            <li><a class="active" href="categorias.html">CATEGORIAS</a></li>
+            <li><a href="contacto.html">CONTACTO</a></li>
+            <li><a href="Personal.html">MARCA PERSONAL</a></li>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>Comprar por deporte</h2>
+    <div class="categorias"> <a href="https://capitalmma.com.mx/collections/nike-boxing" class="categoria"> <img
+                src="assets/img/metin-ozer-IylWs7RLa6A-unsplash.jpg" alt="Box" width="250px" height="150">
+            <p>Box</p>
+        </a> <a href="https://www.nike.com/mx/w/futbol-calzado-1gdj0zy7ok" class="categoria"> <img src="assets/img/football.jpg" alt="Fútbol" width="250px" height="300">
+            <p>Fútbol</p>
+            </a> <a href="https://www.nike.com/mx/w/basquetbol-calzado-3glsmzy7ok" class="categoria"> <img src="assets/img/basquet.jpg" alt="Básquetbol" width="250px">
+                <p>Básquetbol</p>
+        </a> <a href="https://beisbolmania.mx/collections/calzado-1" class="categoria"> <img src="assets/img/beis.jpg" alt="Beisbol" width="250px">
+            <p>Beisbol</p>
+        </a> <a href="https://www.nike.com/mx/w/entrenamiento-y-gimnasio-58jto" class="categoria"> <img src="assets/img/gym.jpg" alt="Gym" width="250px">
+            <p>Gym</p>
+        </a> </div>
+     <img src="assets/img/just.jpg" alt="just do it" width="1800px" style="display: block; margin: 20px auto;">
+
+    <footer class="footer">
+        <p>Derechos reservados &copy; 2023 Tenis a precios</p>
+    </footer>
+</body>
+
+</html>
