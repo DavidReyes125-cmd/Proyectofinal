@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="faviconn.ico" type="image/x-icon">
+    <title>Document</title>
+    <style>
+        body {
+            background: linear-gradient(to right, rgb(117, 172, 160), rgb(213, 224, 164));
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 {
+            background-color: rgb(0, 0, 0);
+            padding: 10px;
+            margin: 0;
+            color: #cbe7cb;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #70d840;
+        }
+
+        .active {
+            background-color: #70d840;
+        }
+
+        br {
+            clear: both;
+        }
+
+        /* CONTENEDOR */
+        .app {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* DARK MODE */
+        .dark {
+            background: #111;
+            color: white;
+        }
+
+        /* INPUTS */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        /* BOTONES */
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: black;
+            color: white;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* TARJETA META */
+        .meta {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .barra {
+            width: 100%;
+            height: 20px;
+            background: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progreso {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4CAF50, #8bc34a);
+            transition: 1s;
+        }
+
+        /* HISTORIAL */
+        .historial {
+            font-size: 13px;
+            margin-top: 10px;
+            background: #eee;
+            padding: 10px;
+            border-radius: 10px;
+            max-height: 100px;
+            overflow: auto;
+        }
+
+        /* NOTIFICACION */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: black;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tenis a precios</h1>
+        <nav>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="modelos.html">MODELOS</a></li>
+            <li><a href="categorias.html">CATEGORIAS</a></li>
+            <li><a href="contacto.html">CONTACTO</a></li>
+            <li><a href="Personal.html">MARCA PERSONAL</a></li>
+            <li><a class="active" href="Yosolo.html">SOLO YO</a></li>
+
+        </nav>
+        <br>
+
+
+    </header>
+    <table border="1">
+        <tr>
+            <th>Nombre</th> <!--  tr significa fila, th significa el encabezado, td significa los datos de la fila  -->
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Pais</th>
+        </tr>
+
+        <tr>
+            <td>Juan</td>
+            <td>Perez</td>
+            <td>juan.perez@example.com</td>
+            <td>Mexico</td>
+        </tr>
+    </table>
+
+    <div class="app" id="app">
+        <h2>Metas de ahorro</h2>
+        <button onclick="modoDark()">Modo dark</button>
+        <br>
+        <h3>Nueva meta</h3>
+        <input id="nombreMeta" placeholder="Ej: Tenis Nike">
+        <input id="precioMeta" type="number" placeholder="Precio objetivo">
+        <button onclick="crearMeta()">Crear meta</button>
+
+        <div id="metas"></div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        let metas = JSON.parse(localStorage.getItem("metas")) || [];
+
+        /* GUARDAR EN LOCALSTORAGE */
+        function guardar() {
+            localStorage.setItem("metas", JSON.stringify(metas));
+        }
+        function noti(texto) {
+            let t = document.getElementById("toast");
+            t.innerText = texto;
+            t.style.display = "block";
+            setTimeout(() => t.style.display = "none", 2000);
+        }
+        /* CREAR META */
+        function crearMeta() {
+            let nombre = document.getElementById("nombreMeta").value;
+            let precio = parseFloat(document.getElementById("precioMeta").value);
+
+            if (!nombre || !precio) return;
+
+            metas.push({
+                nombre: nombre,
+                precio: precio,
+                ahorro: 0,
+                historial: []
+            });
+            guardar();
+            render();
+            noti("Meta creada");
+        }
+        /* AGREGAR DINERO */
+        function agregar(i) {
+            let cantidad = prompt("¿Cuánto ahorrarás?");
+            cantidad = parseFloat(cantidad);
+
+            if (!cantidad) return;
+
+            metas[i].ahorro += cantidad;
+            metas[i].historial.push(cantidad);
+
+            guardar();
+            render();
+            noti("Dinero agregado");
+        }
+        /* MOSTRAR METAS */
+        function render() {
+            let cont = document.getElementById("metas");
+            cont.innerHTML = "";
+
+            metas.forEach((m, i) => {
+
+                let porcentaje = (m.ahorro / m.precio) * 100;
+                if (porcentaje > 100) porcentaje = 100;
+
+                cont.innerHTML += `
+        <div class="meta">
+            <h3>${m.nombre}</h3>
+            <p>$${m.ahorro} / $${m.precio}</p>
+
+            <div class="barra">
+                <div class="progreso" style="width:${porcentaje}%"></div>
+            </div>
+
+            <button onclick="agregar(${i})">Agregar dinero</button>
+
+            <div class="historial">
+                Historial: ${m.historial.join(" + ")}
+            </div>
+        </div>
+        `;
+            });
+        }
+
+        /* DARK MODE */
+        function modoDark() {
+            document.getElementById("app").classList.toggle("dark");
+        }
+
+        render();
+    </script>
+</body>
+
+</html>
