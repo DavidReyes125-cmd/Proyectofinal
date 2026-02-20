@@ -56,8 +56,8 @@
 
         /* DARK MODE */
         .dark {
-            background: #111;
-            color: white;
+            background: #494848;
+            color: rgb(207, 243, 2);
         }
 
         /* INPUTS */
@@ -86,10 +86,16 @@
 
         /* TARJETA META */
         .meta {
-            background: #f4f4f4;
-            padding: 15px;
+            background: #f2f2f2;
             border-radius: 15px;
-            margin-top: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        body.dark .meta {
+            background: #1e1e1e;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         .barra {
@@ -111,11 +117,24 @@
         .historial {
             font-size: 13px;
             margin-top: 10px;
-            background: #eee;
+            background: #eaeaea;
             padding: 10px;
             border-radius: 10px;
             max-height: 100px;
             overflow: auto;
+        }
+
+        body.dark .historial {
+            background: #2a2a2a;
+            color: #ccc;
+        }
+
+        body.dark .barra {
+            background: #333;
+        }
+
+        body.dark .progreso {
+            background: linear-gradient(90deg, #00ff88, #00ccff);
         }
 
         /* NOTIFICACION */
@@ -128,6 +147,10 @@
             padding: 15px;
             border-radius: 10px;
             display: none;
+        }
+
+        .recuadro {
+            background-color: black;
         }
     </style>
 </head>
@@ -166,7 +189,7 @@
 
     <div class="app" id="app">
         <h2>Metas de ahorro</h2>
-        <button onclick="modoDark()">Modo dark</button>
+        <button onclick="modoDark()">Cambiar tema</button>
         <br>
         <h3>Nueva meta</h3>
         <input id="nombreMeta" placeholder="Ej: Tenis Nike">
@@ -222,6 +245,14 @@
             render();
             noti("Dinero agregado");
         }
+        function eliminar(i) {
+            if (confirm("¿Seguro que quieres eliminar esta meta?")) {
+                metas.splice(i, 1);   // elimina 1 elemento en la posición i
+                guardar();           // actualiza localStorage
+                render();            // vuelve a dibujar
+                noti("Meta eliminada");
+            }
+        }
         /* MOSTRAR METAS */
         function render() {
             let cont = document.getElementById("metas");
@@ -242,10 +273,12 @@
             </div>
 
             <button onclick="agregar(${i})">Agregar dinero</button>
-
+            <button class="eliminar" onclick="eliminar(${i})">
+            Eliminar meta  
+            </button>
             <div class="historial">
-                Historial: ${m.historial.join(" + ")}
-            </div>
+                Historial: ${m.historial.join(" / ")}
+            </div>         
         </div>
         `;
             });
@@ -255,8 +288,9 @@
         function modoDark() {
             document.getElementById("app").classList.toggle("dark");
         }
-
         render();
+
+
     </script>
 </body>
 
